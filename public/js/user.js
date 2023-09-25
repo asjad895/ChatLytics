@@ -1,4 +1,4 @@
-const socket = io();
+const socket = io('https://chatlytics.vercel.app');
 console.log(socket);
 const sendForm = document.getElementById('send-cont');
 const mesip = document.getElementById('sendip');
