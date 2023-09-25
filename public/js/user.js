@@ -1,4 +1,5 @@
 const socket = io();
+console.log(socket);
 const sendForm = document.getElementById('send-cont');
 const mesip = document.getElementById('sendip');
 const messagecontainer = document.querySelector('.chat');
