@@ -8,8 +8,8 @@ const cors = require('cors');
 const app = express();
 const server = http.createServer(app);
 const favicon = require('serve-favicon');
-app.use(express.static('../public'));
-app.use(favicon('../public/favicon.ico'));
+app.use(express.static('/public'));
+app.use(favicon('/public/favicon.ico'));
 // Enable CORS for your frontend origin
 app.use(cors({
   origin: 'http://127.0.0.1:5500', // Replace with your frontend URL
