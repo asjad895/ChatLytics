@@ -1,5 +1,4 @@
-const socket = io('https://chatlytics.vercel.app');
-console.log(socket);
+const socket = io('http://localhost:8000/');
 const sendForm = document.getElementById('send-cont');
 const mesip = document.getElementById('sendip');
 const messagecontainer = document.querySelector('.chat');
@@ -58,10 +57,8 @@ const appendMessage = (username, text, time, position) => {
   if (position === 'receiver') {
     messageElement.appendChild(avatarElement);
   }
-
   // Append the message element to the message container
   messagecontainer.appendChild(messageElement);
-
   // Scroll to the latest message
   messagecontainer.scrollTop = messagecontainer.scrollHeight;
 
@@ -208,13 +205,19 @@ newChatForm.addEventListener('submit', async (e) => {
       'Content-Type': 'application/json', 
     },
   }).then(response => {
-      if (!response.ok) {
-        showError('Some thing wrong Try again.');
+    if (!response.ok) {
+      if (response.status === 300) {
+        showError("Group Exist already");
+      } else if (response.status === 500) {
+        showError('Server Error');
+      } else {
+        showError('Something went wrong. Please try again.'); // Default error message
       }
-    })
-    .catch(error => {
-      showError(error);
-    });
+    }
+  })
+  .catch(error => {
+    showError(error);
+  });
   createGroupForm.style.display = 'none';
     refreshCurrentTab();
 });

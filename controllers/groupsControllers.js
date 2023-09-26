@@ -13,8 +13,8 @@ const groups=async (req, res) => {
       const existingGroups = await Group.find();
   
       // Extract group names and usecases
-      const groupNames = existingGroups.map(group => group.name);
-      const groupUsecases = existingGroups.map(group => group.usecase);
+      const groupNames = existingGroups.map(Group => Group.name);
+      const groupUsecases = existingGroups.map(Group => Group.usecase);
   
       // Send the group data as JSON response
       res.json({ groupNames, groupUsecases });
@@ -49,7 +49,6 @@ const groups=async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   }
-  
 
   const newgroups=async (req, res) => {
     try {
@@ -57,17 +56,20 @@ const groups=async (req, res) => {
       const name=req.body.name;
       console.log(name);
       const usecase=req.body.usecase;
-      const newGroup = new Group({name,usecase});
       if(!name ||!usecase){
         res.json({error:"data is not correct"});
-      }else{
+      }
+      const exists = await Group.exists({ name: name });
+      if(exists){
         // Save the new group to your database
-      const savedGroup = await newGroup.save();
-  
-      // Return the saved group as a JSON response
-      console.log("saved"+savedGroup);
-      res.status(201).json(savedGroup);
+        res.status(300).json({ error: 'This group already exist' });
 
+      }else{
+        const newGroup = new Group({name,usecase});
+        const savedGroup = await newGroup.save();
+      // Return the saved group as a JSON response
+        console.log("saved"+savedGroup);
+        res.status(201).json(savedGroup);
       }
 
     } catch (error) {

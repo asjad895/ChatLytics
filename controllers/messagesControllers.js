@@ -3,7 +3,6 @@ const messagesC=async (req, res) => {
     try {
       // Extract data from the request body
       const { sender, receiver, groupName, text } = req.body;
-  
       // Create a new message document
       const message = new Message({
         sender,
@@ -13,7 +12,6 @@ const messagesC=async (req, res) => {
       });
       // Save the message to the database
       await message.save();
-  
       // Send a success response
       res.status(201).json({ message: 'Message stored successfully' });
     } catch (error) {
@@ -30,7 +28,7 @@ const messageg=async (req, res) => {
     // Fetch messages for the specified group from the "messages" collection
     const messages = await Message.findOne({ groupName });
     if(!messages){
-      res.status(500).json({ error: 'u are new.enjoy' });
+      res.status(500).json({ error: 'u are new!enjoy' });
 
     }
     // Send the messages as JSON response

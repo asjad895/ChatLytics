@@ -8,11 +8,11 @@ const cors = require('cors');
 const app = express();
 const server = http.createServer(app);
 const favicon = require('serve-favicon');
-app.use(express.static('/public'));
-app.use(favicon('/public/favicon.ico'));
+app.use(express.static('./public'));
+app.use(favicon('./public/favicon.ico'));
 // Enable CORS for your frontend origin
 app.use(cors({
-  origin: 'https://chatlytics.vercel.app/', // Replace with your frontend URL
+  origin: 'http://localhost:8000/', // Replace with your frontend URL
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'my-custom-header'],
   credentials: true,
