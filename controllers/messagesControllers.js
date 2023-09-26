@@ -30,9 +30,11 @@ const messageg=async (req, res) => {
     if(!messages){
       res.status(500).json({ error: 'u are new!enjoy' });
 
+    }else{
+      // Send the messages as JSON response
+      res.json(messages);
+
     }
-    // Send the messages as JSON response
-    res.json(messages);
   } catch (err) {
     console.error("Error:", err);
     res.status(500).json({ error: 'Internal Server Error' });

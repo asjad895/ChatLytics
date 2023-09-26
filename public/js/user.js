@@ -4,8 +4,13 @@ const mesip = document.getElementById('sendip');
 const messagecontainer = document.querySelector('.chat');
 
 var audio = new Audio('ting.mp3');
-const appendMessage = (username, text, time, position) => {
+const appendMessage = (username2, text, time, position) => {
   // Create a message element
+  let user=username2;
+  if(username==user){
+    position='sender';
+    console.log("ye to append h");
+  }
   const messageElement = document.createElement('div');
   messageElement.classList.add('message');
   messageElement.classList.add(position);
@@ -257,8 +262,8 @@ sendForm.addEventListener('submit', async (e) => {
   let sendip = mesip.value;
   //SEnd Message
   await FormChatListener();
-  var senderUserId='A';
-  var receiverUserId='B';
+  var senderUserId=username;
+  var receiverUserId=newRoomName;
   var currentGroupName=newRoomName;
   console.log(sendip);
   // Assuming you have variables for sender, receiver, and groupName
