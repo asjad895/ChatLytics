@@ -12,7 +12,7 @@ app.use(express.static('/public'));
 app.use(favicon('/public/favicon.ico'));
 // Enable CORS for your frontend origin
 app.use(cors({
-  origin: 'http://127.0.0.1:5500', // Replace with your frontend URL
+  origin: 'https://chatlytics.vercel.app/', // Replace with your frontend URL
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'my-custom-header'],
   credentials: true,
