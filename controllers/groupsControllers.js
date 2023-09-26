@@ -42,7 +42,6 @@ const groups=async (req, res) => {
         // If no group with the given name is found, return a 404 response
         return res.status(404).json({ error: 'Group not found' });
       }
-  
       // Send the found group as a JSON response
       res.json(existingGroup);
     } catch (err) {

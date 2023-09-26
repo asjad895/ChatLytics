@@ -29,7 +29,10 @@ const messageg=async (req, res) => {
     const groupName = req.query.group;
     // Fetch messages for the specified group from the "messages" collection
     const messages = await Message.findOne({ groupName });
-    console.log(messages);
+    if(!messages){
+      res.status(500).json({ error: 'u are new.enjoy' });
+
+    }
     // Send the messages as JSON response
     res.json(messages);
   } catch (err) {

@@ -78,7 +78,7 @@ async function fetchExistingGroups() {
   try {
     const response = await fetch('/api/groups'); // Make a GET request to your API endpoint
     if (!response.ok) {
-      showError('Your data have not saved yet.');
+      showError('Groups is empty');
     }
     const data = await response.json(); // Parse the JSON response
     return data;
@@ -280,7 +280,7 @@ sendForm.addEventListener('submit', async (e) => {
       console.log('Message sent asynchronously');
     }).catch((error) => {
       // Display a user-friendly error message to the user
-      showError(error.message);
+      showError("i dont know");
     });
   } catch (error) {
     // Display a user-friendly error message to the user
