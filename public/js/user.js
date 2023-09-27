@@ -110,7 +110,12 @@ async function fetchMessagesForGroup(groupName) {
     // Display the fetched messages in the chat section
     const chatSection = document.querySelector('.chat-section');
     // Implement your logic to display messages in the chat section
-    console.log(data.text); 
+    const user=data.user;
+    const group=data.group;
+    const text=data.message;
+    const time=data.time;
+    appendMessage(user,text,time,'reciever');
+    console.log(data); 
   } catch (error) {
     showError('An error occurred while processing your request. Please try again.');
   }

@@ -5,7 +5,8 @@ const messageSchema = new mongoose.Schema({
   receiver: { type: String, required: true },   // User ID of the receiver
   groupName: { type: String, required: true },  // Name of the group
   text: { type: String, required: true },       // Message text
-}, { timestamps: true });
+},
+{ timestamps: true });
 
 const Message = mongoose.model('Message', messageSchema);
 

@@ -1,4 +1,5 @@
-const Message=require('../models/message')
+const Message=require('../models/message');
+const { groups } = require('./groupsControllers');
 const messagesC=async (req, res) => {
     try {
       // Extract data from the request body
@@ -32,8 +33,19 @@ const messageg=async (req, res) => {
 
     }else{
       // Send the messages as JSON response
-      res.json(messages);
-
+      const username=messages.sender;
+      const time=messages.createdAt;
+      const group=messages.groupName;
+      const m=messages.text;
+      console.log(username);
+      const time1 = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'});
+      const month = time.toLocaleString('default', { month: 'short' });
+      const day = time.getDate();
+      const formattedDateTime = `${day}|${month}:${time1}`;
+      console.log(formattedDateTime); 
+      const data={user:username,group:group,time:formattedDateTime,message:m};
+      console.log(data);
+      res.json(data);
     }
   } catch (err) {
     console.error("Error:", err);
