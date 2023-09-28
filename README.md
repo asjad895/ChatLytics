@@ -33,3 +33,9 @@ Challenge: Implementing socket.io for real-time communication between clients an
 The Real-Time Chat Application project presented various challenges, from managing bidirectional communication to designing a dynamic website and handling data storage. By utilizing technologies like socket.io, asynchronous programming, MongoDB, and event-driven architecture, we were able to address these challenges effectively. The end result is a real-time chat platform that provides seamless communication and a user-friendly experience.
 
 ### Demo:
+
+
+
+https://github.com/asjad895/ChatLytics/assets/109430048/ee095abf-3fed-4ff3-ae6a-67d590019c64
+
+
