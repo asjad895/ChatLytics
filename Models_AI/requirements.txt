@@ -1,0 +1,7 @@
+nltk
+spaCy
+Gensim
+Pattern
+# For tokenization
+torch
+transformers
